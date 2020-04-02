@@ -57,7 +57,8 @@ const performCalculation={
   '*':(firstOperand,secondOperand)=> firstOperand * secondOperand,
   '/':(firstOperand,secondOperand)=> firstOperand / secondOperand,
   '-':(firstOperand,secondOperand)=> firstOperand - secondOperand,
-  '=':(firstOperand,secondOperand)=> secondOperand
+  '=':(firstOperand,secondOperand)=> secondOperand ,
+  '!':(firstOperand,secondOperand)=> secondOperand*secondOperand
 
 };
 
@@ -88,6 +89,16 @@ keys.addEventListener("click",(event)=>{
      handleOperator(target.value)
      updateDisplay();
       return;
+    }
+
+    if(target.classList.contains('root')){
+      calculator.displayValue= (Math.sqrt(parseInt(calculator.displayValue)));
+    }
+     
+    if(target.classList.contains('square')){
+      calculator.firstOperand = calculator.displayValue ;
+      calculator.displayValue = calculator.firstOperand*calculator.firstOperand ;
+      calculator.firstOperand=null;
     }
 
     if(target.classList.contains('decimal')){
